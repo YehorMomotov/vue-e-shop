@@ -84,7 +84,9 @@ export default {
 
       if (this.selected !== "All" && this.selected) {
         this.sortedProducts = this.sortedProducts.filter((item) => {
-          return item.category === this.selected;
+          return (
+            item.category.toLowerCase() === this.selected.toLowerCase()
+          );
         });
       }
     },
@@ -118,8 +120,8 @@ export default {
   mounted() {
     this.GET_PRODUCTS_FROM_API().then((responce) => {
       if (responce.data) {
-        this.sortProducts();
         this.searchProduct(this.SEARCH_VALUE);
+        this.sortProducts();
       }
     });
   },
