@@ -1,0 +1,450 @@
+{
+  "categories": [
+    {
+      "image": "burger-category.png",
+      "name": "Burger",
+      "available": true
+    },
+    {
+      "image": "pizza-category.png",
+      "name": "Pizza",
+      "available": true
+    },
+    {
+      "image": "sushi-category.png",
+      "name": "Sushi",
+      "available": true
+    },
+    {
+      "image": "soups-category.png",
+      "name": "Dessert",
+      "available": true
+    }
+  ],
+  "products": [
+    {
+      "image": "b5a30083.jpg",
+      "name": "Pizza Margarita",
+      "price": 300.101,
+      "article": "P1",
+      "available": true,
+      "category": "Pizza"
+    },
+    {
+      "image": "jpg_1000_97605ce3-3739-4b89-8a91-6905d062acfb.png",
+      "name": "Pizza Pepperoni",
+      "price": 300.101,
+      "article": "P2",
+      "available": true,
+      "category": "Pizza"
+    },
+    {
+      "image": "50b2b5194b68323ce3874e78d8d8ccf20c15043e_599_399_c.jpg",
+      "name": "Chicago Pizza",
+      "price": 300.101,
+      "article": "P3",
+      "available": true,
+      "category": "Pizza"
+    },
+    {
+      "image": "15_1611827556-1280x640.jpg",
+      "name": "Pizza with sea goods",
+      "price": 300.101,
+      "article": "P4",
+      "available": true,
+      "category": "Pizza"
+    },
+    {
+      "image": "picca-s-gribami-pomidorami-i-syrom_1631622465_1_max.jpg",
+      "name": "Pizza with shrums",
+      "price": 300.101,
+      "article": "P5",
+      "available": true,
+      "category": "Pizza"
+    },
+    {
+      "image": "gavai.jpg",
+      "name": "Gavai Pizza",
+      "price": 300.101,
+      "article": "P6",
+      "available": true,
+      "category": "Pizza"
+    },
+    {
+      "image": "images.jpg",
+      "name": "Pizza Vegeteriano",
+      "price": 300.101,
+      "article": "P7",
+      "available": true,
+      "category": "Pizza"
+    },
+    {
+      "image": "images (1).jpg",
+      "name": "Pizza Extra-Meat",
+      "price": 300.101,
+      "article": "P8",
+      "available": true,
+      "category": "Pizza"
+    },
+    {
+      "image": "10-2-827x1300.jpg",
+      "name": "Pizza Chicken",
+      "price": 300.101,
+      "article": "P9",
+      "available": true,
+      "category": "Pizza"
+    },
+    {
+      "image": "italianskaia-pitstsa-kaltsonie.jpg",
+      "name": "Pizza Kaltsonie",
+      "price": 300.101,
+      "article": "P10",
+      "available": true,
+      "category": "Pizza"
+    },
+    {
+      "image": "appetizing-pepper-pizza-with-jalapeno_219193-1054.webp",
+      "name": "Pizza Jalapeno",
+      "price": 300.101,
+      "article": "P11",
+      "available": true,
+      "category": "Pizza"
+    },
+    {
+      "image": "figandprosciutto .jpg",
+      "name": "Fig and Prosciutto Pizza",
+      "price": 300.101,
+      "article": "P12",
+      "available": true,
+      "category": "Pizza"
+    },
+    {
+      "image": "wqaedsfd.jpeg",
+      "name": "Sushi with tuna",
+      "price": 300.101,
+      "article": "S1",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "sushi.jpeg",
+      "name": "Sushi Set with tuna",
+      "price": 300.101,
+      "article": "S2",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "dadsfdgfhg.png",
+      "name": "Sushi with salmon",
+      "price": 300.101,
+      "article": "S3",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "oquybi1.jpg",
+      "name": "Sushi Set with salmon",
+      "price": 300.101,
+      "article": "S4",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "n 1jor12r.jpg",
+      "name": "Sushi with acne",
+      "price": 300.101,
+      "article": "S5",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "as.jpeg",
+      "name": "Sushi Set with acne",
+      "price": 300.101,
+      "article": "S6",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "unagief209681.jpg",
+      "name": "Sushi Temagi Unagi",
+      "price": 300.101,
+      "article": "S7",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "AWFsdfg.jpg",
+      "name": "Sushi California Classic",
+      "price": 300.101,
+      "article": "S8",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "sushi.png",
+      "name": "Sushi New California",
+      "price": 300.101,
+      "article": "S9",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "qdxfc.jpg",
+      "name": "Maki with Chuka",
+      "price": 300.101,
+      "article": "S10",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "WQAFewsdff.jpg",
+      "name": "Sushi with avocado and cucumber",
+      "price": 300.101,
+      "article": "S11",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "imagesrs.jpg",
+      "name": "Roasted Sushi with Chrump",
+      "price": 300.101,
+      "article": "S12",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "sushi.jpg",
+      "name": "Sushi with Chrump",
+      "price": 300.101,
+      "article": "S13",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "QWAEzsfdxgfhg.jpg",
+      "name": "Tamato Nigiri",
+      "price": 300.101,
+      "article": "S14",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "qwesredtxrf.jpg",
+      "name": "Sushi with squid",
+      "price": 300.101,
+      "article": "S15",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "imagesgs.jpg",
+      "name": "Gunckan-Sushi with sea urchin caviar",
+      "price": 300.101,
+      "article": "S16",
+      "available": true,
+      "category": "Sushi"
+    },
+    {
+      "image": "recept_6094_7brv.jpg",
+      "name": "Cheaseburger",
+      "price": 300.101,
+      "article": "B1",
+      "available": true,
+      "category": "Burger"
+    },
+    {
+      "image": "Peekoniburger.copy_.jpeg",
+      "name": "Burger with beacon",
+      "price": 300.101,
+      "article": "B2",
+      "available": true,
+      "category": "Burger"
+    },
+    {
+      "image": "b8afb55e.jpg",
+      "name": "Classic American Burger",
+      "price": 300.101,
+      "article": "B3",
+      "available": true,
+      "category": "Burger"
+    },
+    {
+      "image": "burger-s-kuricei_1597384362_2_max.jpg",
+      "name": "Chikenburger",
+      "price": 300.101,
+      "article": "B4",
+      "available": true,
+      "category": "Burger"
+    },
+    {
+      "image": "qwsdrt.jpg",
+      "name": "Fishburger",
+      "price": 300.101,
+      "article": "B5",
+      "available": true,
+      "category": "Burger"
+    },
+    {
+      "image": "chernii_burger-609464.jpeg",
+      "name": "Burger Black",
+      "price": 300.101,
+      "article": "B6",
+      "available": true,
+      "category": "Burger"
+    },
+    {
+      "image": "chisburger2.jpg",
+      "name": "Double Cheaseburger",
+      "price": 300.101,
+      "article": "B7",
+      "available": true,
+      "category": "Burger"
+    },
+    {
+      "image": "dabl-burger.jpg",
+      "name": "Double Burger",
+      "price": 300.101,
+      "article": "B8",
+      "available": true,
+      "category": "Burger"
+    },
+    {
+      "image": "Vegetarianskiy-burger-kartinka.jpg",
+      "name": "Vegeterian Burger",
+      "price": 300.101,
+      "article": "B9",
+      "available": true,
+      "category": "Burger"
+    },
+    {
+      "image": "kudaeda_79831914242_kudaedacom_19_2.webp",
+      "name": "Double Chikenburger",
+      "price": 300.101,
+      "article": "B10",
+      "available": true,
+      "category": "Burger"
+    },
+    {
+      "image": "lkjhgfds.jpg",
+      "name": "Burger with egg and beaf",
+      "price": 300.101,
+      "article": "B11",
+      "available": true,
+      "category": "Burger"
+    },
+    {
+      "image": "imagessb.jpg",
+      "name": "Chrimpburger",
+      "price": 300.101,
+      "article": "B12",
+      "available": true,
+      "category": "Burger"
+    },
+    {
+      "image": "homemadevanilliaicecream.jpg",
+      "name": "Vanilla ice cream",
+      "price": 300.101,
+      "article": "D1",
+      "available": true,
+      "category": "Dessert"
+    },
+    {
+      "image": "oh.jpg",
+      "name": "Creamy ice cream",
+      "price": 300.101,
+      "article": "D2",
+      "available": true,
+      "category": "Dessert"
+    },
+    {
+      "image": "wertyukhjgf.jpg",
+      "name": "Chocolate ice cream",
+      "price": 300.101,
+      "article": "D3",
+      "available": true,
+      "category": "Dessert"
+    },
+    {
+      "image": "b07c0988.jpg",
+      "name": "Lemon Sorbet",
+      "price": 300.101,
+      "article": "D4",
+      "available": true,
+      "category": "Dessert"
+    },
+    {
+      "image": "wesdrfg.jpg",
+      "name": "Strawwberry Sorbet",
+      "price": 300.101,
+      "article": "D5",
+      "available": true,
+      "category": "Dessert"
+    },
+    {
+      "image": "p_O.jpg",
+      "name": "Chocolate Sorbet with nuts",
+      "price": 300.101,
+      "article": "D6",
+      "available": true,
+      "category": "Dessert"
+    },
+    {
+      "image": "2qewrytukjhgfd.jpg",
+      "name": "Eclairs",
+      "price": 300.101,
+      "article": "D7",
+      "available": true,
+      "category": "Dessert"
+    },
+    {
+      "image": "bdcd5ebddbc3fd4a474f899e319958ca.jpg",
+      "name": "Profiteroles",
+      "price": 300.101,
+      "article": "D8",
+      "available": true,
+      "category": "Dessert"
+    },
+    {
+      "image": "3d18239fe67903c73c27d706972d4377-quality_100Xresize_crop_1Xallow_enlarge_0Xw_680Xh_510.jpg",
+      "name": "Nuts Parfe",
+      "price": 300.101,
+      "article": "D9",
+      "available": true,
+      "category": "Dessert"
+    },
+    {
+      "image": "qewrdfghjkmnbvcx.jpg",
+      "name": "Pishmaniya",
+      "price": 300.101,
+      "article": "D10",
+      "available": true,
+      "category": "Dessert"
+    },
+    {
+      "image": "hhujidmkos.jpg",
+      "name": "Dondurma",
+      "price": 300.101,
+      "article": "D11",
+      "available": true,
+      "category": "Dessert"
+    },
+    {
+      "image": "91b131942e7686be079b45b3006140a9.jpg",
+      "name": "Tiramisu with Liquor",
+      "price": 300.101,
+      "article": "D12",
+      "available": true,
+      "category": "Dessert"
+    },
+    {
+      "image": "klassicheskij-chizkejk_1636720966979.jpeg",
+      "name": "Classic Cheesecake",
+      "price": 300.101,
+      "article": "D13",
+      "available": true,
+      "category": "Dessert"
+    }
+  ]
+}
