@@ -16,9 +16,113 @@
       "available": true
     },
     {
-      "image": "soups-category.png",
+      "image": "dessert-category.png",
       "name": "Dessert",
       "available": true
+    }
+  ],
+  "burger-parts": [
+    {
+      "image": "top-bread-bun.png",
+      "name": "top-bread-bun",
+      "available": true,
+      "price": 3.75
+    },
+    {
+      "image": "middle-bread-bun.png",
+      "name": "middle-bread-bun",
+      "available": true,
+      "price": 3.25
+    },
+    {
+      "image": "bottom-bread-bun.png",
+      "name": "bottom-bread-bun",
+      "available": true,
+      "price": 3.5
+    },
+    {
+      "image": "cutlet.png",
+      "name": "cutlet",
+      "available": true,
+      "price": 14
+    },
+    {
+      "image": "chease-slice.png",
+      "name": "chease-slice",
+      "available": true,
+      "price": 7.5
+    },
+    {
+      "image": "mushrooms.png",
+      "name": "mushrooms",
+      "available": true,
+      "price": 12.85
+    },
+    {
+      "image": "onion-circle.png",
+      "name": "onion-circle",
+      "available": true,
+      "price": 5.65
+    },
+    {
+      "image": "salad-leaf.png",
+      "name": "salad-leaf",
+      "available": true,
+      "price": 15
+    },
+    {
+      "image": "tomato-slice.png",
+      "name": "tomato-slice",
+      "available": true,
+      "price": 7.75
+    },
+    {
+      "image": "ketchup.png",
+      "name": "ketchup",
+      "available": true,
+      "price": 11
+    },
+    {
+      "image": "fish-cutlet.png",
+      "name": "fish-cutlet",
+      "available": true,
+      "price": 24.95
+    },
+    {
+      "image": "cheese-sauce.png",
+      "name": "cheese-sauce",
+      "available": true,
+      "price": 14.15
+    },
+    {
+      "image": "marinated-cucumbers.png",
+      "name": "marinated-cucumbers",
+      "available": false,
+      "price": 22.65
+    },
+    {
+      "image": "egg.png",
+      "name": "egg",
+      "available": true,
+      "price": 7
+    },
+    {
+      "image": "microgreens.png",
+      "name": "microgreens",
+      "available": false,
+      "price": 29.95
+    },
+    {
+      "image": "pepper-slice.png",
+      "name": "pepper-slice",
+      "available": true,
+      "price": 19.95
+    },
+    {
+      "image": "roasted-onion-ring.png",
+      "name": "roasted-onion-ring",
+      "available": false,
+      "price": 9.95
     }
   ],
   "products": [

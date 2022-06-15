@@ -76,14 +76,10 @@ export default {
 
 <style lang="scss">
 .e-cart {
+  padding-bottom: 0;
   &__total {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
     padding: $padding * 2;
     display: flex;
-    z-index: 11;
     justify-content: center;
     background: $green_bg;
     color: #ffffff;

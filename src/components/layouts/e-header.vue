@@ -53,7 +53,7 @@ export default {
 
 <style lang="scss">
 .e-header-wrapper {
-  z-index: 10;
+  z-index: 100;
   box-shadow: 0 0 8px black;
   position: fixed;
   width: 100%;
@@ -80,16 +80,13 @@ export default {
 
   &__navbar {
     flex-grow: 3;
-
     :hover {
       background: $sandy_beach;
     }
   }
-
   .logo {
     padding: 0;
     margin: 0;
-
     height: 74px;
   }
   .search-field-div {

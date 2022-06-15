@@ -29,4 +29,17 @@ export default {
         return error;
       });
   },
+  GET_BURGER_PARTS_FROM_API({ commit }) {
+    return axios("http://localhost:3000/burger-parts", {
+      method: "GET",
+    })
+      .then((burgerParts) => {
+        commit("SET_BURGER_PARTS_TO_STATE", burgerParts.data);
+        return burgerParts;
+      })
+      .catch((error) => {
+        console.log(error);
+        return error;
+      });
+  },
 };

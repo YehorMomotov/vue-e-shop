@@ -24,6 +24,9 @@ export default {
   SET_CATEGORIES_TO_STATE: (state, categories) => {
     state.categories = categories;
   },
+  SET_BURGER_PARTS_TO_STATE: (state, burgerParts) => {
+    state.burgerParts = burgerParts;
+  },
   SET_CART: (state, product) => {
     if (state.cart.length) {
       let isProductExist = false;

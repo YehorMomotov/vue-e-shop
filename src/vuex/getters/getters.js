@@ -20,4 +20,7 @@ export default {
   SELECTED(state) {
     return state.selected;
   },
+  BURGER_PARTS(state) {
+    return state.burgerParts;
+  },
 };
