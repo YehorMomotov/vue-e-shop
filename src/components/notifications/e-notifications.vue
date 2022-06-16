@@ -58,10 +58,11 @@ export default {
   top: 80px;
   user-select: none;
   right: 20px;
-  z-index: 11;
+  z-index: 101;
+  background: transparent !important;
   &__content {
     padding: $padding * 2;
-    background: green;
+    background: green !important;
     margin-bottom: 20px;
     border-radius: 4px;
     color: white;

@@ -2,6 +2,11 @@
   <div class="e-custom">
     <div class="e-custom__description">
       <h1>Custom</h1>
+      <h1>
+        Реализовать двусвязный список, с ним проще будет реализовать
+        перемещение элементов вверх\вниз. Доделать main, сделать адаптив.
+        После этих трех пунктов проект будет готов
+      </h1>
       <h2>
         Here you can make burger by your own recipe. You only need to
         decide which ingredients to use.
@@ -9,27 +14,18 @@
       </h2>
     </div>
     <div class="e-custom__burger-construction">
-      <div class="e-custom__burger-construction__workshop">
-        <div
-          class="e-custom__burger-construction__workshop__parts"
-          :style="{ zIndex: index }"
-          v-for="(burgerPart, index) in currentBurgerParts"
-          :key="index"
-          @click="partActions(burgerPart)"
-        >
-          <div class="img-wrapper">
-            <img
-              :src="
-                require('@/assets/images/burger-parts/' + burgerPart.image)
-              "
-              :alt="burgerPart.name"
-              :title="burgerPart.name"
-            />
-          </div>
-        </div>
-      </div>
-      <eIngredientsMenuVue
-        :burgerParts="BURGER_PARTS"
+      <eCustomTheBurgerVue
+        :currentBurgerParts="currentBurgerParts"
+        @partActions="partActions"
+        :maxParts="maxParts"
+      />
+      <eCustomSelectedItemVue
+        :selectedItem="selectedItem"
+        @optionSelected="optionSelected"
+        @moveItem="moveItem"
+      />
+      <eCustomIngredientsMenuVue
+        :burgerParts="itemsArray"
         @addPart="addPart"
       />
     </div>
@@ -38,45 +34,22 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import eIngredientsMenuVue from "./e-ingredients-menu.vue";
+import eCustomIngredientsMenuVue from "./e-custom-ingredients-menu.vue";
+import eCustomSelectedItemVue from "./e-custom-selected-item.vue";
+import eCustomTheBurgerVue from "./e-custom-the-burger.vue";
 
 export default {
-  components: { eIngredientsMenuVue },
+  components: {
+    eCustomIngredientsMenuVue,
+    eCustomTheBurgerVue,
+    eCustomSelectedItemVue,
+  },
   name: "e-custom",
   data() {
     return {
-      parts: [
-        {
-          image: "top-bread-bun.png",
-          name: "top-bread-bun",
-          available: true,
-        },
-        { image: "cutlet.png", name: "cutlet", available: true },
-        {
-          image: "chease-slice.png",
-          name: "chease-slice",
-          available: true,
-        },
-        {
-          image: "middle-bread-bun.png",
-          name: "middle-bread-bun",
-          available: true,
-        },
-        { image: "mushrooms.png", name: "mushrooms", available: true },
-        {
-          image: "tomato-slice.png",
-          name: "tomato-slice",
-          available: true,
-        },
-        { image: "ketchup.png", name: "ketchup", available: true },
-        { image: "fish-cutlet.png", name: "fish-cutlet", available: true },
-
-        {
-          image: "bottom-bread-bun.png",
-          name: "bottom-bread-bun",
-          available: true,
-        },
-      ],
+      maxParts: 20,
+      parts: [],
+      selectedItem: { name: "none" },
     };
   },
   computed: {
@@ -84,19 +57,80 @@ export default {
     currentBurgerParts() {
       return this.parts;
     },
+    itemsArray() {
+      return JSON.parse(JSON.stringify(this.BURGER_PARTS));
+    },
   },
   methods: {
+    ...mapActions(["GET_BURGER_PARTS_FROM_API"]),
     partActions(part) {
-      console.log(part);
+      this.selectedItem = part;
     },
     addPart(part) {
-      this.parts.push(part);
+      if (
+        part.name === "top-bread-bun" ||
+        part.name === "bottom-bread-bun"
+      ) {
+        part.available = false;
+      }
+      part.selectedOption = part.species[0];
+      part.index = Number;
+      this.selectedItem = part;
+      this.parts.unshift(part);
+      this.putInOrder();
     },
-    ...mapActions(["GET_BURGER_PARTS_FROM_API"]),
+    optionSelected(option) {
+      this.selectedItem.selectedOption = option;
+    },
+    putInOrder() {
+      this.parts.forEach((part, index) => {
+        if (part.name === "top-bread-bun" && index !== 0) {
+          // const tmp = part;
+          this.parts.slice(index, 1);
+          console.log(this.parts);
+          // this.parts.unshift(tmp);
+        } else if (
+          part.name === "bottom-bread-bun" &&
+          index !== this.parts.length - 1
+        ) {
+          const tmp = part;
+          this.parts.slice(index, 1);
+          console.log(this.parts);
+          this.parts.push(tmp);
+        }
+        this.parts[index].index = index;
+      });
+    },
+    moveItem(direction, item) {
+      if (direction === "up" && item.index !== 1) {
+        const tmp = this.parts[item.index - 1];
+        console.log(
+          this.parts[item.index - 1].name,
+          this.parts[item.index].name
+        );
+        this.parts[item.index - 1] = item;
+        console.log(
+          this.parts[item.index - 1].name,
+          this.parts[item.index].name
+        );
+        this.parts[item.index] = tmp;
+        console.log(
+          this.parts[item.index - 1].name,
+          this.parts[item.index].name
+        );
+      } else if (
+        direction === "down" &&
+        item.index !== this.parts.length - 2
+      ) {
+        const tmp = this.parts[item.index + 1];
+        this.parts[item.index + 1] = item;
+        this.parts[item.index] = tmp;
+      }
+      // this.putInOrder();
+    },
   },
   mounted() {
     this.GET_BURGER_PARTS_FROM_API();
-    this.currentBurgerParts.reverse();
   },
 };
 </script>
@@ -108,26 +142,7 @@ export default {
   }
   &__burger-construction {
     display: flex;
-    &__workshop {
-      flex-basis: 80%;
-      display: flex;
-      justify-content: flex-end;
-      flex-direction: column-reverse;
-      &__parts {
-        height: 100px;
-        margin: 0 auto;
-        .img-wrapper {
-          width: 300px;
-          height: 170px;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: -100 0;
-          }
-        }
-      }
-    }
+    justify-content: flex-end;
   }
 }
 </style>

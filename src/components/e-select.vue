@@ -12,10 +12,10 @@
         :class="{ needed_background: areOptionsVisible }"
         class="e-select__option"
         v-for="option in options"
-        :key="option.value"
+        :key="option"
         @click="selectOption(option)"
       >
-        {{ option.name }}
+        {{ option }}
       </p>
     </div>
   </div>
@@ -65,6 +65,9 @@ export default {
 
 <style lang="scss">
 .e-select {
+  :active {
+    filter: brightness(110%);
+  }
   user-select: none;
   font-size: 1.3em;
   position: relative;

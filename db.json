@@ -26,103 +26,120 @@
       "image": "top-bread-bun.png",
       "name": "top-bread-bun",
       "available": true,
-      "price": 3.75
+      "price": 3.75,
+      "species": ["white", "black", "rye"]
     },
     {
       "image": "middle-bread-bun.png",
       "name": "middle-bread-bun",
       "available": true,
-      "price": 3.25
+      "price": 3.25,
+      "species": ["white", "black", "rye"]
     },
     {
       "image": "bottom-bread-bun.png",
       "name": "bottom-bread-bun",
       "available": true,
-      "price": 3.5
+      "price": 3.5,
+      "species": ["white", "black", "rye"]
     },
     {
       "image": "cutlet.png",
       "name": "cutlet",
       "available": true,
-      "price": 14
+      "price": 14,
+      "species": ["beef", "pork", "chicken"]
     },
     {
       "image": "chease-slice.png",
       "name": "chease-slice",
       "available": true,
-      "price": 7.5
+      "price": 7.5,
+      "species": ["common"]
     },
     {
       "image": "mushrooms.png",
       "name": "mushrooms",
       "available": true,
-      "price": 12.85
+      "price": 12.85,
+      "species": ["champignons", "chanterelles", "cep"]
     },
     {
       "image": "onion-circle.png",
       "name": "onion-circle",
       "available": true,
-      "price": 5.65
+      "price": 5.65,
+      "species": ["bulb", "shallot"]
     },
     {
       "image": "salad-leaf.png",
-      "name": "salad-leaf",
+      "name": "lettuce-leaf",
       "available": true,
-      "price": 15
+      "price": 15,
+      "species": ["common"]
     },
     {
       "image": "tomato-slice.png",
       "name": "tomato-slice",
       "available": true,
-      "price": 7.75
+      "price": 7.75,
+      "species": ["common", "cherry", ""]
     },
     {
       "image": "ketchup.png",
       "name": "ketchup",
       "available": true,
-      "price": 11
+      "price": 11,
+      "species": ["common"]
     },
     {
       "image": "fish-cutlet.png",
       "name": "fish-cutlet",
       "available": true,
-      "price": 24.95
+      "price": 24.95,
+      "species": ["salmon", "hake", "sardine"]
     },
     {
       "image": "cheese-sauce.png",
       "name": "cheese-sauce",
       "available": true,
-      "price": 14.15
+      "price": 14.15,
+      "species": ["common"]
     },
     {
       "image": "marinated-cucumbers.png",
       "name": "marinated-cucumbers",
       "available": false,
-      "price": 22.65
+      "price": 22.65,
+      "species": ["common"]
     },
     {
       "image": "egg.png",
       "name": "egg",
       "available": true,
-      "price": 7
+      "price": 7,
+      "species": ["chicken", "quail"]
     },
     {
       "image": "microgreens.png",
       "name": "microgreens",
       "available": false,
-      "price": 29.95
+      "price": 29.95,
+      "species": ["common"]
     },
     {
       "image": "pepper-slice.png",
       "name": "pepper-slice",
       "available": true,
-      "price": 19.95
+      "price": 19.95,
+      "species": ["bulgarian", "jalapeno", "chili"]
     },
     {
       "image": "roasted-onion-ring.png",
       "name": "roasted-onion-ring",
       "available": false,
-      "price": 9.95
+      "price": 9.95,
+      "species": ["common"]
     }
   ],
   "products": [

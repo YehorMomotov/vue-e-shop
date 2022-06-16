@@ -45,4 +45,8 @@ html {
 body {
   margin: 0;
 }
+button:active,
+a:active {
+  filter: brightness(110%);
+}
 </style>

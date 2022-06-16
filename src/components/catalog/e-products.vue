@@ -35,13 +35,7 @@ export default {
 
   data() {
     return {
-      categories: [
-        { name: "All", value: "all" },
-        { name: "Burger", value: "b" },
-        { name: "Pizza", value: "p" },
-        { name: "Sushi", value: "s" },
-        { name: "Dessert", value: "d" },
-      ],
+      categories: ["All", "Burger", "Pizza", "Sushi", "Dessert"],
       selected: this.$store.state.selected,
       sortedProducts: [],
       minPrice: 0,
@@ -90,14 +84,7 @@ export default {
         });
       }
     },
-    setRangeSliders() {
-      if (this.minPrice > this.maxPrice) {
-        let tmp = this.maxPrice;
-        this.maxPrice = this.minPrice;
-        this.minPrice = tmp;
-      }
-      this.sortProducts();
-    },
+
     searchProduct(value) {
       if (value) {
         this.sortedProducts = this.PRODUCTS.filter((item) => {
