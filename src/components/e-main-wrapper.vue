@@ -1,5 +1,6 @@
 <template>
   <div class="e-main-wrapper">
+    <eNotificationsVue />
     <eHeaderVue />
     <keep-alive>
       <router-view class="e-main-wrapper__content"></router-view>
@@ -12,10 +13,11 @@
 import { mapGetters } from "vuex";
 import eFooterVue from "./layouts/e-footer.vue";
 import eHeaderVue from "./layouts/e-header.vue";
+import eNotificationsVue from "./notifications/e-notifications.vue";
 
 export default {
   name: "e-main-wrapper",
-  components: { eHeaderVue, eFooterVue },
+  components: { eHeaderVue, eFooterVue, eNotificationsVue },
   props: {},
   data() {
     return {};

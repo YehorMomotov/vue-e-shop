@@ -31,11 +31,13 @@ export default {
         return [];
       },
     },
+
     selected: {
       type: String,
       default: "",
     },
   },
+
   data() {
     return {
       areOptionsVisible: false,
@@ -46,17 +48,21 @@ export default {
     openSelect() {
       this.areOptionsVisible = true;
     },
+
     selectOption(option) {
       this.$emit("select", option);
       this.areOptionsVisible = false;
     },
+
     hideSelect() {
       this.areOptionsVisible = false;
     },
   },
+
   mounted() {
     document.addEventListener("click", this.hideSelect.bind(this), true);
   },
+
   beforeDestroy() {
     document.removeEventListener("click", this.hideSelect);
   },

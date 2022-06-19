@@ -1,9 +1,5 @@
 <template>
   <div class="e-products">
-    <eNotificationsVue
-      @removeMessage="removeMessage"
-      :messages="messages"
-    />
     <h1>Catalog</h1>
     <div class="filters">
       <eSelectVue
@@ -26,12 +22,11 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import eSelectVue from "../e-select.vue";
-import eNotificationsVue from "../notifications/e-notifications.vue";
 import eProduct from "./e-product.vue";
 
 export default {
   name: "e-products",
-  components: { eNotificationsVue, eProduct, eSelectVue },
+  components: { eProduct, eSelectVue },
 
   data() {
     return {
@@ -43,8 +38,10 @@ export default {
       messages: [],
     };
   },
+
   computed: {
     ...mapGetters(["SEARCH_VALUE", "PRODUCTS", "CART", "SELECTED"]),
+
     filteredProducts() {
       if (this.sortedProducts) {
         return this.sortedProducts;
@@ -53,22 +50,28 @@ export default {
       }
     },
   },
+
   methods: {
-    ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
+    ...mapActions([
+      "GET_PRODUCTS_FROM_API",
+      "ADD_TO_CART",
+      "SET_NOTIFICATIONS",
+      "SET_SELECTED",
+    ]),
+
     addToCart(data) {
       this.ADD_TO_CART(data).then(() => {
-        this.messages.unshift({
+        this.SET_NOTIFICATIONS({
           name: data.article + " was added to cart",
           id: Date.now(),
+          type: "succeed",
         });
       });
     },
-    removeMessage() {
-      this.messages.splice(this.messages.length - 1, 1);
-    },
+
     sortProducts(category) {
       if (category) {
-        this.selected = category.name;
+        this.SET_SELECTED(category);
       }
 
       this.sortedProducts = [...this.PRODUCTS];
@@ -95,6 +98,7 @@ export default {
       }
     },
   },
+
   watch: {
     SEARCH_VALUE() {
       this.searchProduct(this.SEARCH_VALUE);
@@ -104,6 +108,7 @@ export default {
       this.sortProducts();
     },
   },
+
   mounted() {
     this.GET_PRODUCTS_FROM_API().then((responce) => {
       if (responce.data) {

@@ -1,14 +1,10 @@
 <template>
   <div class="e-ingredients-menu">
-    <eNotificationsVue
-      @removeMessage="removeMessage"
-      :messages="messages"
-    />
     <div
       class="e-ingredients-menu__item"
-      v-for="part in burgerParts"
+      v-for="(part, index) in burgerParts"
       :key="part.name"
-      @click="addPart(part)"
+      @click="addPart(part, index)"
     >
       <div
         :class="{
@@ -31,9 +27,9 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import kebabToNormal from "../../filters/kebabToNormal.js";
 
-import eNotificationsVue from "../notifications/e-notifications.vue";
 export default {
   name: "e-ingredients-menu",
   data() {
@@ -41,7 +37,6 @@ export default {
       messages: [],
     };
   },
-  components: { eNotificationsVue },
   filters: { kebabToNormal },
   props: {
     burgerParts: {
@@ -52,20 +47,27 @@ export default {
     },
   },
   methods: {
-    addPart(part) {
+    ...mapActions(["SET_NOTIFICATIONS"]),
+    addPart(part, index) {
       if (part.available) {
-        part.name === "top-bread-bun" || part.name === "bottom-bread-bun"
-          ? this.$emit("addPart", part)
-          : this.$emit("addPart", JSON.parse(JSON.stringify(part)));
+        if (
+          part.name === "top-bread-bun" ||
+          part.name === "bottom-bread-bun"
+        ) {
+          part.available = false;
+          this.$set(this.burgerParts, index, part);
+
+          this.$emit("addPart", part);
+        } else {
+          this.$emit("addPart", JSON.parse(JSON.stringify(part)));
+        }
       } else {
-        this.messages.unshift({
+        this.SET_NOTIFICATIONS({
           name: "This item is unavailable now!",
           id: Date.now(),
+          type: "error",
         });
       }
-    },
-    removeMessage() {
-      this.messages.splice(this.messages.length - 1, 1);
     },
   },
 };
@@ -73,8 +75,8 @@ export default {
 
 <style lang="scss">
 .e-ingredients-menu {
-  border-radius: 20px;
   flex-basis: 25%;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -103,7 +105,7 @@ export default {
     background: $sandy_beach;
   }
   &__item {
-    transition: 300ms ease-in-out;
+    transition: background 300ms ease-in-out;
     background: $hillary;
     border-bottom: 1px solid black;
     cursor: pointer;
@@ -113,7 +115,7 @@ export default {
       cursor: auto;
     }
     &__wrapper {
-      transition: 300ms ease-in-out;
+      transition: background 300ms ease-in-out;
       flex-wrap: nowrap;
       padding-left: $padding * 2;
       align-items: center;

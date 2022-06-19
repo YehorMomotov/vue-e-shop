@@ -2,17 +2,20 @@
   <div class="e-custom">
     <div class="e-custom__description">
       <h1>Custom</h1>
-      <h1>
-        Реализовать двусвязный список, с ним проще будет реализовать
-        перемещение элементов вверх\вниз. Доделать main, сделать адаптив.
-        После этих трех пунктов проект будет готов
-      </h1>
       <h2>
         Here you can make burger by your own recipe. You only need to
         decide which ingredients to use.
         <h5>And don't forget about their order!</h5>
       </h2>
     </div>
+    <span class="e-custom__btns-wrapper">
+      <button class="add-btn" @click="addToCart">
+        Add my burger! <i class="material-icons">add_shopping_cart</i>
+      </button>
+      <button class="clear-btn" @click="clear">
+        Clear constructor <i class="material-icons">clear</i>
+      </button>
+    </span>
     <div class="e-custom__burger-construction">
       <eCustomTheBurgerVue
         :currentBurgerParts="currentBurgerParts"
@@ -22,7 +25,8 @@
       <eCustomSelectedItemVue
         :selectedItem="selectedItem"
         @optionSelected="optionSelected"
-        @moveItem="moveItem"
+        @itemAction="putInOrder"
+        @apllyToAll="apllyToAll"
       />
       <eCustomIngredientsMenuVue
         :burgerParts="itemsArray"
@@ -52,6 +56,7 @@ export default {
       selectedItem: { name: "none" },
     };
   },
+
   computed: {
     ...mapGetters(["BURGER_PARTS"]),
     currentBurgerParts() {
@@ -61,72 +66,162 @@ export default {
       return JSON.parse(JSON.stringify(this.BURGER_PARTS));
     },
   },
+
   methods: {
-    ...mapActions(["GET_BURGER_PARTS_FROM_API"]),
+    ...mapActions([
+      "GET_BURGER_PARTS_FROM_API",
+      "ADD_TO_CART",
+      "SET_NOTIFICATIONS",
+    ]),
+
+    addToCart() {
+      if (this.parts.length === 0) {
+        this.SET_NOTIFICATIONS({
+          name: "There is no ingredients in your burger!",
+          id: Date.now(),
+          type: "error",
+        });
+      } else {
+        const condition =
+          this.parts.filter((item) => {
+            return (
+              item.name === "top-bread-bun" ||
+              item.name === "bottom-bread-bun"
+            );
+          }).length > 1;
+        if (condition) {
+          const product = {
+            price: 0,
+            image: "custom.png",
+            name: "Custom burger",
+            article: "BC" + Date.now().toString(),
+            available: true,
+            category: "Burger",
+            quantity: 1,
+            contains: this.parts.map((item) => {
+              const tmp = JSON.parse(JSON.stringify(item));
+              delete tmp.id;
+              delete tmp.appliedToAll;
+              return tmp;
+            }),
+          };
+          this.parts.forEach((part) => {
+            product.price += part.price;
+          });
+          this.ADD_TO_CART(product);
+          this.SET_NOTIFICATIONS({
+            name: "Your burger added to cart!",
+            id: Date.now(),
+            type: "succeed",
+          });
+        } else {
+          this.SET_NOTIFICATIONS({
+            name: "You forgot to add top and/or bottom buns, be careful next time!",
+            id: Date.now(),
+            type: "warning",
+          });
+        }
+      }
+    },
+
     partActions(part) {
       this.selectedItem = part;
     },
+
+    clear() {
+      this.parts = [];
+      this.selectedItem = { name: "none" };
+      this.GET_BURGER_PARTS_FROM_API();
+    },
+
     addPart(part) {
-      if (
-        part.name === "top-bread-bun" ||
-        part.name === "bottom-bread-bun"
-      ) {
-        part.available = false;
-      }
       part.selectedOption = part.species[0];
-      part.index = Number;
+      part.id = Date.now();
+      part.appliedToAll = false;
       this.selectedItem = part;
       this.parts.unshift(part);
       this.putInOrder();
     },
+
     optionSelected(option) {
-      this.selectedItem.selectedOption = option;
+      this.$set(this.selectedItem, "selectedOption", option);
+      if (this.selectedItem.appliedToAll) {
+        this.apllyToAll(
+          option,
+          this.selectedItem,
+          this.selectedItem.appliedToAll
+        );
+      }
     },
-    putInOrder() {
+
+    swapItems(firstIndex, secondIndex, part) {
+      const tmp = this.parts[firstIndex];
+      this.$set(this.parts, secondIndex, tmp);
+      this.$set(this.parts, firstIndex, part);
+    },
+
+    putInOrder(action, item) {
       this.parts.forEach((part, index) => {
         if (part.name === "top-bread-bun" && index !== 0) {
-          // const tmp = part;
-          this.parts.slice(index, 1);
-          console.log(this.parts);
-          // this.parts.unshift(tmp);
+          this.swapItems(0, 1, part);
         } else if (
           part.name === "bottom-bread-bun" &&
           index !== this.parts.length - 1
         ) {
-          const tmp = part;
-          this.parts.slice(index, 1);
-          console.log(this.parts);
-          this.parts.push(tmp);
+          this.swapItems(this.parts.length - 1, index, part);
         }
-        this.parts[index].index = index;
+        if (
+          action === "up" &&
+          item.id === part.id &&
+          index > 1 &&
+          index < this.parts.length - 1
+        ) {
+          this.swapItems(index - 1, index, part);
+          action = "";
+        } else if (
+          action === "down" &&
+          item.id === part.id &&
+          index < this.parts.length - 2 &&
+          index
+        ) {
+          this.swapItems(index + 1, index, part);
+          action = "";
+        } else if (action === "remove" && item.id === part.id) {
+          console.log(index);
+          action = "";
+          part.available = true;
+          this.parts.splice(index, 1);
+          this.parts[index]
+            ? (this.selectedItem = this.parts[index])
+            : this.parts[index + 1]
+            ? (this.selectedItem = this.parts[index + 1])
+            : this.parts[index - 1]
+            ? (this.selectedItem = this.parts[index - 1])
+            : (this.selectedItem = { name: "none" });
+        }
       });
     },
-    moveItem(direction, item) {
-      if (direction === "up" && item.index !== 1) {
-        const tmp = this.parts[item.index - 1];
-        console.log(
-          this.parts[item.index - 1].name,
-          this.parts[item.index].name
-        );
-        this.parts[item.index - 1] = item;
-        console.log(
-          this.parts[item.index - 1].name,
-          this.parts[item.index].name
-        );
-        this.parts[item.index] = tmp;
-        console.log(
-          this.parts[item.index - 1].name,
-          this.parts[item.index].name
-        );
-      } else if (
-        direction === "down" &&
-        item.index !== this.parts.length - 2
-      ) {
-        const tmp = this.parts[item.index + 1];
-        this.parts[item.index + 1] = item;
-        this.parts[item.index] = tmp;
-      }
-      // this.putInOrder();
+
+    apllyToAll(option, part, isChecked) {
+      this.parts.forEach((item) => {
+        if (
+          item.name.includes("bread-bun") &&
+          part.name.includes("bread-bun")
+        ) {
+          isChecked
+            ? ((item.selectedOption = option), (item.appliedToAll = true))
+            : part.name === item.name
+            ? (item.appliedToAll = false)
+            : ((item.selectedOption = item.species[0]),
+              (item.appliedToAll = false));
+        } else if (part.name === item.name && part.id !== item.id) {
+          console.log(item, isChecked);
+          isChecked
+            ? ((item.selectedOption = option), (item.appliedToAll = true))
+            : (item.selectedOption = item.species[0]),
+            (item.appliedToAll = false);
+        }
+      });
     },
   },
   mounted() {
@@ -142,7 +237,42 @@ export default {
   }
   &__burger-construction {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+  }
+  &__btns-wrapper {
+    display: flex;
+    margin-bottom: $margin * 2;
+    max-height: fit-content;
+    justify-content: center;
+    align-items: center;
+    .add-btn,
+    .clear-btn {
+      transition: background 300ms ease-in-out;
+      border-radius: 10px;
+      border: none;
+      padding: $padding;
+      font-size: 1.7em;
+      width: 20%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      .material-icons {
+        background: transparent !important;
+      }
+    }
+    .add-btn {
+      background: $green_bg;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .clear-btn {
+      border-top-left-radius: 0;
+      background: $mandalay;
+      border-bottom-left-radius: 0;
+    }
+    :hover {
+      background: $sandy_beach !important;
+    }
   }
 }
 </style>

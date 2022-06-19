@@ -23,4 +23,10 @@ export default {
   SET_SELECTED({ commit }, selected) {
     commit("SET_SELECTED", selected);
   },
+  SET_NOTIFICATIONS({ commit }, notifications) {
+    commit("SET_NOTIFICATIONS", notifications);
+  },
+  REMOVE_NOTIFICATIONS({ commit }, index) {
+    commit("REMOVE_NOTIFICATIONS", index);
+  },
 };

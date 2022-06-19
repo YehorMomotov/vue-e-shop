@@ -34,6 +34,16 @@ export default {
         if (item.article === product.article) {
           isProductExist = true;
           item.quantity++;
+        } else if (item.article.includes("BC")) {
+          if (
+            JSON.stringify(item.contains) ===
+            JSON.stringify(product.contains)
+          ) {
+            console.log("here");
+            console.log(item, product);
+            isProductExist = true;
+            item.quantity++;
+          }
         }
       });
       if (!isProductExist) {
@@ -49,5 +59,11 @@ export default {
   },
   SET_SELECTED: (state, selected) => {
     state.selected = selected;
+  },
+  SET_NOTIFICATIONS: (state, notifications) => {
+    state.notifications.push(notifications);
+  },
+  REMOVE_NOTIFICATIONS: (state, index) => {
+    state.notifications.splice(index, 1);
   },
 };

@@ -17,6 +17,7 @@ let store = new Vuex.Store({
     cart: [],
     categories: [],
     burgerParts: [],
+    notifications: [],
   },
   mutations,
   actions,

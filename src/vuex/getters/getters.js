@@ -23,4 +23,7 @@ export default {
   BURGER_PARTS(state) {
     return state.burgerParts;
   },
+  NOTIFICATIONS(state) {
+    return state.notifications;
+  },
 };

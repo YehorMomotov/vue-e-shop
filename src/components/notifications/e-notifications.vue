@@ -4,15 +4,18 @@
       <div
         class="e-notification__content"
         v-for="message in messages"
+        :class="[message.type]"
         :key="message.id"
       >
-        <div class="content__text">
+        <div class="e-notification__content__text">
           <span>{{ message.name }}</span>
-          <i class="material-icons">check_circle</i>
-        </div>
-        <div class="content__btns">
-          <button v-if="LB.length">{{ LB }}</button>
-          <button v-if="RB.length">{{ RB }}</button>
+          <i class="material-icons">{{
+            message.type === "error"
+              ? "error"
+              : message.type === "warning"
+              ? "warning"
+              : "done"
+          }}</i>
         </div>
       </div>
     </transition-group>
@@ -20,34 +23,31 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   name: "e-notifications",
-  props: {
-    messages: {
-      type: Array,
-      default: () => {
-        return [];
-      },
-    },
-    LB: { type: String, default: "" },
-    RB: { type: String, default: "" },
-  },
+  props: {},
   methods: {
+    ...mapActions(["REMOVE_NOTIFICATIONS"]),
     hideNotif() {
       if (this.messages.length) {
         setTimeout(() => {
-          this.$emit("removeMessage");
+          this.REMOVE_NOTIFICATIONS(0);
         }, 3000);
       }
+    },
+  },
+  computed: {
+    ...mapGetters(["NOTIFICATIONS"]),
+    messages() {
+      return this.NOTIFICATIONS;
     },
   },
   watch: {
     messages() {
       this.hideNotif();
     },
-  },
-  mounted() {
-    this.hideNotif();
   },
 };
 </script>
@@ -58,11 +58,19 @@ export default {
   top: 80px;
   user-select: none;
   right: 20px;
+  .succeed {
+    background: green;
+  }
+  .error {
+    background: red;
+  }
+  .warning {
+    background: darkorange;
+  }
   z-index: 101;
   background: transparent !important;
   &__content {
     padding: $padding * 2;
-    background: green !important;
     margin-bottom: 20px;
     border-radius: 4px;
     color: white;
@@ -71,15 +79,20 @@ export default {
     align-items: center;
     height: 50px;
   }
-  .content {
+  &__content {
     &__text {
       display: flex;
+      background: transparent !important;
+      span {
+        background: transparent !important;
+      }
       align-items: center;
       justify-content: space-between;
     }
   }
   .material-icons {
     margin-left: 10px;
+    background: transparent !important;
   }
 }
 .e-transition-animate {
