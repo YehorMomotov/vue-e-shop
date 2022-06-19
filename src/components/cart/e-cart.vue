@@ -78,12 +78,14 @@ export default {
 .e-cart {
   padding-bottom: 0;
   &__total {
+    border-radius: 10px;
     padding: $padding * 2;
     display: flex;
     justify-content: center;
     background: $green_bg;
     color: #ffffff;
     font-size: 20px;
+    margin-top: 300px;
   }
   .total_name {
     margin-right: $margin * 2;

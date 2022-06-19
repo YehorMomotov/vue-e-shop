@@ -39,8 +39,6 @@ export default {
             JSON.stringify(item.contains) ===
             JSON.stringify(product.contains)
           ) {
-            console.log("here");
-            console.log(item, product);
             isProductExist = true;
             item.quantity++;
           }

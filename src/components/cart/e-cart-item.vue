@@ -65,7 +65,7 @@ export default {
   padding: $padding * 2;
   margin: $margin * 2;
   &__img {
-    max-width: 50px;
+    max-width: 150px;
   }
 }
 .quantity-btn {

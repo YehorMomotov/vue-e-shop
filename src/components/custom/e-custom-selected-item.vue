@@ -66,7 +66,6 @@ export default {
   },
   methods: {
     apllyToAll(option) {
-      console.log(event);
       this.$emit(
         "apllyToAll",
         option,

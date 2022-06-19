@@ -215,7 +215,6 @@ export default {
             : ((item.selectedOption = item.species[0]),
               (item.appliedToAll = false));
         } else if (part.name === item.name && part.id !== item.id) {
-          console.log(item, isChecked);
           isChecked
             ? ((item.selectedOption = option), (item.appliedToAll = true))
             : (item.selectedOption = item.species[0]),
