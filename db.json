@@ -1,4 +1,75 @@
 {
+  "order": {
+    "totalCost": 21,
+    "orderData": {
+      "userName": {
+        "value": "3123",
+        "validation": true
+      },
+      "phoneNumber": {
+        "value": "(123) 123-12-31",
+        "validation": true
+      },
+      "location": {
+        "value": "123123",
+        "validation": true
+      },
+      "cutlery": {
+        "value": 1,
+        "validation": true
+      },
+      "additional": "1231224112",
+      "cartData": [
+        {
+          "price": 10.5,
+          "image": "custom.png",
+          "name": "Custom burger",
+          "article": "BC1655826890808",
+          "available": true,
+          "category": "Burger",
+          "quantity": 2,
+          "contains": [
+            {
+              "image": "top-bread-bun.png",
+              "name": "top-bread-bun",
+              "available": false,
+              "price": 3.75,
+              "species": [
+                "white",
+                "black",
+                "rye"
+              ],
+              "selectedOption": "white"
+            },
+            {
+              "image": "middle-bread-bun.png",
+              "name": "middle-bread-bun",
+              "available": true,
+              "price": 3.25,
+              "species": [
+                "white",
+                "black",
+                "rye"
+              ],
+              "selectedOption": "white"
+            },
+            {
+              "image": "bottom-bread-bun.png",
+              "name": "bottom-bread-bun",
+              "available": false,
+              "price": 3.5,
+              "species": [
+                "white",
+                "black",
+                "rye"
+              ],
+              "selectedOption": "white"
+            }
+          ]
+        }
+      ]
+    }
+  },
   "categories": [
     {
       "image": "burger-category.png",
@@ -27,119 +98,171 @@
       "name": "top-bread-bun",
       "available": true,
       "price": 3.75,
-      "species": ["white", "black", "rye"]
+      "species": [
+        "white",
+        "black",
+        "rye"
+      ]
     },
     {
       "image": "middle-bread-bun.png",
       "name": "middle-bread-bun",
       "available": true,
       "price": 3.25,
-      "species": ["white", "black", "rye"]
+      "species": [
+        "white",
+        "black",
+        "rye"
+      ]
     },
     {
       "image": "bottom-bread-bun.png",
       "name": "bottom-bread-bun",
       "available": true,
       "price": 3.5,
-      "species": ["white", "black", "rye"]
+      "species": [
+        "white",
+        "black",
+        "rye"
+      ]
     },
     {
       "image": "cutlet.png",
       "name": "cutlet",
       "available": true,
       "price": 14,
-      "species": ["beef", "pork", "chicken"]
+      "species": [
+        "beef",
+        "pork",
+        "chicken"
+      ]
     },
     {
       "image": "chease-slice.png",
       "name": "chease-slice",
       "available": true,
       "price": 7.5,
-      "species": ["common"]
+      "species": [
+        "common"
+      ]
     },
     {
       "image": "mushrooms.png",
       "name": "mushrooms",
       "available": true,
       "price": 12.85,
-      "species": ["champignons", "chanterelles", "cep"]
+      "species": [
+        "champignons",
+        "chanterelles",
+        "cep"
+      ]
     },
     {
       "image": "onion-circle.png",
       "name": "onion-circle",
       "available": true,
       "price": 5.65,
-      "species": ["bulb", "shallot"]
+      "species": [
+        "bulb",
+        "shallot"
+      ]
     },
     {
       "image": "salad-leaf.png",
       "name": "lettuce-leaf",
       "available": true,
       "price": 15,
-      "species": ["common"]
+      "species": [
+        "common"
+      ]
     },
     {
       "image": "tomato-slice.png",
       "name": "tomato-slice",
       "available": true,
       "price": 7.75,
-      "species": ["common", "cherry", ""]
+      "species": [
+        "common",
+        "cherry",
+        ""
+      ]
     },
     {
       "image": "ketchup.png",
       "name": "ketchup",
       "available": true,
       "price": 11,
-      "species": ["common"]
+      "species": [
+        "common"
+      ]
     },
     {
       "image": "fish-cutlet.png",
       "name": "fish-cutlet",
       "available": true,
       "price": 24.95,
-      "species": ["salmon", "hake", "sardine"]
+      "species": [
+        "salmon",
+        "hake",
+        "sardine"
+      ]
     },
     {
       "image": "cheese-sauce.png",
       "name": "cheese-sauce",
       "available": true,
       "price": 14.15,
-      "species": ["common"]
+      "species": [
+        "common"
+      ]
     },
     {
       "image": "marinated-cucumbers.png",
       "name": "marinated-cucumbers",
       "available": false,
       "price": 22.65,
-      "species": ["common"]
+      "species": [
+        "common"
+      ]
     },
     {
       "image": "egg.png",
       "name": "egg",
       "available": true,
       "price": 7,
-      "species": ["chicken", "quail"]
+      "species": [
+        "chicken",
+        "quail"
+      ]
     },
     {
       "image": "microgreens.png",
       "name": "microgreens",
       "available": false,
       "price": 29.95,
-      "species": ["common"]
+      "species": [
+        "common"
+      ]
     },
     {
       "image": "pepper-slice.png",
       "name": "pepper-slice",
       "available": true,
       "price": 19.95,
-      "species": ["bulgarian", "jalapeno", "chili"]
+      "species": [
+        "bulgarian",
+        "jalapeno",
+        "chili"
+      ]
     },
     {
       "image": "roasted-onion-ring.png",
       "name": "roasted-onion-ring",
       "available": false,
       "price": 9.95,
-      "species": ["common"]
+      "species": [
+        "common"
+      ]
     }
   ],
   "products": [

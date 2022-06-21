@@ -13,12 +13,17 @@
             placeholder="Search..."
             v-model="searchValue"
           />
-          <button class="search-btn" @click="search(searchValue)">
-            <i class="material-icons">search</i>
-          </button>
-          <button class="search-btn" @click="clearSearchValue">
-            <i class="material-icons">cancel</i>
-          </button>
+          <i
+            @click="search(searchValue)"
+            class="search-bar material-icons click-animation"
+            >search</i
+          >
+
+          <i
+            @click="clearSearchValue"
+            class="search-bar material-icons click-animation"
+            >cancel</i
+          >
         </div>
       </div>
     </div>
@@ -93,11 +98,10 @@ export default {
     display: flex;
     max-width: fit-content;
     align-items: center;
-    color: white;
+    background-color: white;
     margin-right: 20px;
     border-radius: 10px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
+    padding-right: $padding;
   }
   .search-field {
     border-radius: 10px;
@@ -107,12 +111,13 @@ export default {
     width: 20em;
     height: 1em;
   }
-  .search-btn {
-    background: transparent;
-    border: none;
-    :hover {
+  .search-bar {
+    border-radius: 10px;
+    color: $cedar;
+    margin-left: $margin/2;
+
+    &:hover {
       background: $sandy_beach;
-      border-radius: 10px;
     }
   }
 }

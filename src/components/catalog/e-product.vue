@@ -6,6 +6,8 @@
       :popupTitle="productData.name"
       @closePopup="closeInfoPopup"
       @addToCartAction="addToCart"
+      LB="Close info"
+      RB="Add to cart"
     >
       <img
         class="e-product__img"
@@ -85,7 +87,6 @@ export default {
   flex-basis: 25%;
   box-shadow: 0 0 8px 0 grey;
   padding: $padding * 2;
-  transition: 300ms ease;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,7 +106,6 @@ export default {
   &__name {
     max-width: fit-content;
     margin: 10px;
-    background: transparent !important;
   }
   &__price {
     font-size: 1.2em;
@@ -131,11 +131,9 @@ export default {
     border-bottom-left-radius: 0;
     background: $green_bg;
   }
-
-  &__btns {
-    :hover {
-      background: $hillary !important;
-    }
+  transition: 300ms background ease;
+  &:hover {
+    background: $sandy_beach;
   }
 }
 </style>

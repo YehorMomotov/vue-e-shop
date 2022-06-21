@@ -29,6 +29,17 @@ export default {
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+button,
+a {
+  &:active {
+    filter: brightness(110%);
+  }
+  transition: 300ms background ease;
+  &:hover {
+    background: $hillary;
+  }
+}
+
 #app {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -36,17 +47,26 @@ export default {
   text-align: center;
   color: $cedar;
 }
+.click-animation {
+  cursor: pointer;
+  transition: 300ms background ease;
+  &:hover {
+    background: $hillary;
+  }
+  &:active {
+    filter: brightness(125%);
+  }
+}
+
 .material-icons {
   user-select: none;
 }
+
 html {
   background: $sandy_beach_light;
 }
+
 body {
   margin: 0;
-}
-button:active,
-a:active {
-  filter: brightness(110%);
 }
 </style>

@@ -62,7 +62,7 @@ export default {
     addToCart(data) {
       this.ADD_TO_CART(data).then(() => {
         this.SET_NOTIFICATIONS({
-          name: data.article + " was added to cart",
+          name: data.name + " was added to cart",
           id: Date.now(),
           type: "succeed",
         });
@@ -129,9 +129,6 @@ export default {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    :hover {
-      background: $sandy_beach;
-    }
   }
 
   .filters {

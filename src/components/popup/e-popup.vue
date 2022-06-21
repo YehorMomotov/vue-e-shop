@@ -4,13 +4,15 @@
       <div class="e-popup__header">
         <span> {{ popupTitle }}</span>
         <span
-          ><i class="material-icons" @click="closePopup">close</i></span
+          ><i class="material-icons click-animation" @click="closePopup"
+            >close</i
+          ></span
         >
       </div>
       <div class="e-popup__content"><slot></slot></div>
       <div class="e-popup__footer">
-        <button class="close-btn" @click="closePopup">Close info</button>
-        <button class="add-btn" @click="addToCart">Add to Cart</button>
+        <button class="close-btn" @click="closePopup">{{ LB }}</button>
+        <button class="add-btn" @click="addToCart">{{ RB }}</button>
       </div>
     </div>
   </div>
@@ -19,7 +21,11 @@
 <script>
 export default {
   name: "e-popup",
-  props: { popupTitle: { type: String, default: "Ok" } },
+  props: {
+    popupTitle: { type: String, default: "Ok" },
+    LB: { type: String, default: "close" },
+    RB: { type: String, default: "proceed" },
+  },
   data() {
     return {};
   },
@@ -42,10 +48,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-* {
-  background: white !important;
-}
+<style lang="scss">
 .popup-wrapper {
   display: flex;
   justify-content: center;
@@ -57,12 +60,12 @@ export default {
   bottom: 0;
   height: 100%;
   backdrop-filter: blur(4px);
-  background: #00000070 !important;
+  background: #00000070;
 }
 .e-popup {
   z-index: 4;
   padding: $padding * 2;
-
+  background: white;
   position: fixed;
   top: 170px;
   box-shadow: 0 0 17px 0 #e7e7e7;
@@ -74,6 +77,10 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .material-icons {
+      border-radius: 10px;
+      box-shadow: 0 0 2px black;
+    }
   }
   &__content {
     display: flex;
@@ -99,26 +106,21 @@ export default {
       padding: $padding;
       width: 120px;
       color: black;
-      background: #26ae68 !important;
+      background: #26ae68;
     }
     .close-btn {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       background: $mandalay;
       padding-right: $padding/2;
-
       color: black;
-
-      background: $mandalay !important;
+      background: $mandalay;
     }
     .add-btn {
       padding-left: $padding/2;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
       background: $green_bg;
-    }
-    :hover {
-      background: $hillary !important;
     }
   }
 }
