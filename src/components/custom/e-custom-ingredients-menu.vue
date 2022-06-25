@@ -2,11 +2,12 @@
   <div class="e-ingredients-menu">
     <div
       class="e-ingredients-menu__item"
-      v-for="(part, index) in burgerParts"
+      v-for="(part, index) in itemsArray"
       :key="part.name"
       @click="addPart(part, index)"
     >
       <div
+        :key="part.available"
         :class="{
           'e-ingredients-menu__item__wrapper': true,
           unavailable: !part.available,
@@ -35,6 +36,7 @@ export default {
   data() {
     return {
       messages: [],
+      itemsArray: [],
     };
   },
   filters: { kebabToNormal },
@@ -55,11 +57,9 @@ export default {
           part.name === "bottom-bread-bun"
         ) {
           part.available = false;
-          this.$set(this.burgerParts, index, part);
-
           this.$emit("addPart", part);
         } else {
-          this.$emit("addPart", JSON.parse(JSON.stringify(part)));
+          this.$emit("addPart", JSON.parse(JSON.stringify(part)), index);
         }
       } else {
         this.SET_NOTIFICATIONS({
@@ -68,6 +68,14 @@ export default {
           type: "error",
         });
       }
+    },
+  },
+  watch: {
+    burgerParts: {
+      handler() {
+        this.itemsArray = this.burgerParts;
+      },
+      deep: true,
     },
   },
 };
@@ -80,6 +88,7 @@ export default {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
   height: 750px;
   align-items: flex-end;
   border-top-right-radius: 0;
@@ -139,6 +148,21 @@ export default {
   }
   :active {
     filter: brightness(110%);
+  }
+  @media screen and (max-width: 768px) {
+    min-width: 85px;
+    &__item {
+      &__wrapper {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+        span {
+          font-size: 0.7em;
+          text-align: center;
+        }
+      }
+    }
   }
 }
 </style>

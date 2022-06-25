@@ -48,6 +48,7 @@ export default {
 
 <style lang="scss">
 .e-catalog {
+  padding-bottom: 100px;
   &__list {
     margin: 0 auto;
     max-width: $img-size * 2;
@@ -70,6 +71,36 @@ export default {
     padding: 50px;
     height: 200px;
     width: 200px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .e-catalog-category {
+    &__img {
+      user-select: none;
+      padding: 12px;
+      height: 200px;
+      width: 200px;
+    }
+  }
+}
+@media only screen and (max-width: 525px) {
+  .e-catalog-category {
+    &__img {
+      user-select: none;
+      padding: 12px;
+      height: 150px;
+      width: 150px;
+    }
+  }
+}
+@media only screen and (max-width: 375px) {
+  .e-catalog-category {
+    &__img {
+      user-select: none;
+      padding: 12px;
+      height: 100px;
+      width: 100px;
+    }
   }
 }
 </style>

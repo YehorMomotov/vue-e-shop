@@ -1,19 +1,15 @@
 <template>
   <div>
-    <h1>
-      <h1><h1>Oстался только адаптив, самурай, будь сильным.</h1></h1>
-    </h1>
     <div class="main-top">
       <h1>Wellcome to Є-Крамниця store!</h1>
       <h2>
         Here you can order some fast-food that we serve. <br />
-        Also you can make burger by your own recipe. Our best chiefs it
-        will make for you. <br />
+        You can make burger by your own recipe. <br />
         If you cant pick up the order yourself we can deliver it to you,
-        just point it when confirming your order.
+        just point adress when confirming your order.
       </h2>
     </div>
-    <div class="about">
+    <div class="about" @click="showP">
       <h1>About company</h1>
       <div class="about__mainly about__el">
         <h2>Mainly</h2>
@@ -101,6 +97,22 @@
 <script>
 export default {
   name: "e-main-page",
+  methods: {
+    showP() {
+      if (event.target.tagName === "H2") {
+        if (!event.target.parentElement.classList.contains("show")) {
+          event.target.parentNode.parentNode.childNodes.forEach(
+            (element) => {
+              element.classList.remove("show");
+            }
+          );
+          event.target.parentElement.classList.add("show");
+        } else {
+          event.target.parentElement.classList.remove("show");
+        }
+      }
+    },
+  },
 };
 </script>
 
@@ -109,13 +121,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  h2 {
-    // text-align: justify;
-  }
 }
 .about {
   display: flex;
   flex-direction: column;
+  margin-left: $margin;
+  margin-right: $margin * 4;
   h1 {
     font-size: 2em;
     text-align: left;
@@ -131,6 +142,40 @@ export default {
     p {
       margin-left: $margin * 5;
     }
+  }
+}
+@media screen and (max-width: 768px) {
+  .about {
+    margin-left: $margin;
+    margin-right: $margin;
+    h1 {
+      font-size: 2em;
+      text-align: left;
+      margin-left: 0;
+    }
+    &__el {
+      z-index: 5;
+      margin-left: $margin / 2;
+      padding: $padding;
+      &:hover {
+        background: $sandy_beach;
+      }
+      h2 {
+        padding: $padding * 2;
+        padding-left: 0;
+        margin: 0;
+      }
+      text-align: justify;
+      p {
+        display: none;
+        margin-left: $margin / 2;
+      }
+    }
+  }
+}
+.show {
+  p {
+    display: block;
   }
 }
 </style>

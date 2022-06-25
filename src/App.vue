@@ -31,6 +31,8 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 button,
 a {
+  text-decoration: none;
+  color: $cedar;
   &:active {
     filter: brightness(110%);
   }
@@ -39,7 +41,46 @@ a {
     background: $hillary;
   }
 }
-
+.main-width {
+  max-width: $body_width - 160px;
+  min-width: $body_width - 160px;
+}
+@media only screen and (max-width: 1440px) {
+  .main-width {
+    max-width: $body_width - 460px;
+    min-width: $body_width - 460px;
+  }
+}
+@media only screen and (max-width: 1240px) {
+  .main-width {
+    max-width: $body_width - 560px;
+    min-width: $body_width - 560px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .main-width {
+    max-width: $body_width - 760px;
+    min-width: $body_width - 760px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .main-width {
+    max-width: $body_width - 1060px;
+    min-width: $body_width - 1060px;
+  }
+}
+@media only screen and (max-width: 525px) {
+  .main-width {
+    max-width: $body_width - 1160px;
+    min-width: $body_width - 1160px;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .main-width {
+    max-width: $body_width - 1230px;
+    min-width: $body_width - 1230px;
+  }
+}
 #app {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -69,4 +110,7 @@ html {
 body {
   margin: 0;
 }
+// @media screen and (max-width: 320px) {
+//   $body_width: 280px;
+// }
 </style>

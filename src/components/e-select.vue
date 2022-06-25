@@ -123,5 +123,12 @@ export default {
     border-bottom-right-radius: 0;
     background: $sandy_beach;
   }
+  @media screen and (max-width: 525px) {
+    width: 100px;
+    font-size: 0.8em;
+    &__options {
+      width: 100px;
+    }
+  }
 }
 </style>

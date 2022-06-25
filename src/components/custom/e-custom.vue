@@ -135,12 +135,21 @@ export default {
     },
 
     addPart(part) {
-      part.selectedOption = part.species[0];
-      part.id = Date.now();
-      part.appliedToAll = false;
-      this.selectedItem = part;
-      this.parts.unshift(part);
-      this.putInOrder();
+      if (this.parts.length <= this.maxParts + 1) {
+        //this.maxParts + 1 because top and bottom buns doesn`t count
+        part.selectedOption = part.species[0];
+        part.id = Date.now();
+        part.appliedToAll = false;
+        this.selectedItem = part;
+        this.parts.unshift(part);
+        this.putInOrder();
+      } else {
+        this.SET_NOTIFICATIONS({
+          name: "There is too much ingredients in your burger! Maximum: 20 parts!",
+          id: Date.now(),
+          type: "error",
+        });
+      }
     },
 
     optionSelected(option) {
@@ -187,7 +196,6 @@ export default {
           this.swapItems(index + 1, index, part);
           action = "";
         } else if (action === "remove" && item.id === part.id) {
-          console.log(index);
           action = "";
           part.available = true;
           this.parts.splice(index, 1);
@@ -231,6 +239,7 @@ export default {
 
 <style lang="scss" scoped>
 .e-custom {
+  padding-bottom: 100px;
   &__description {
     margin: 0;
   }
@@ -253,6 +262,7 @@ export default {
       font-size: 1.7em;
       width: 20%;
       display: flex;
+      flex-wrap: nowrap;
       justify-content: space-evenly;
       align-items: center;
       .material-icons {
@@ -269,8 +279,31 @@ export default {
       background: $mandalay;
       border-bottom-left-radius: 0;
     }
+    @media screen and (max-width: 1440px) {
+      &__btns-wrapper {
+        .add-btn,
+        .clear-btn {
+          font-size: 1em;
+          width: 40%;
+        }
+      }
+    }
+    @media screen and (max-width: 1024px) {
+      .add-btn,
+      .clear-btn {
+        font-size: 1em;
+        width: 25%;
+      }
+    }
+    @media screen and (max-width: 525px) {
+      .add-btn,
+      .clear-btn {
+        font-size: 0.8em;
+        width: 40%;
+      }
+    }
     :hover {
-      background: $sandy_beach !important;
+      background: $sandy_beach;
     }
   }
 }

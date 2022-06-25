@@ -1,7 +1,6 @@
 <template>
   <div class="e-product">
     <ePopupVue
-      class="e-product__info"
       v-if="isInfoPopupVisible"
       :popupTitle="productData.name"
       @closePopup="closeInfoPopup"
@@ -134,6 +133,27 @@ export default {
   transition: 300ms background ease;
   &:hover {
     background: $sandy_beach;
+  }
+
+  @media only screen and (max-width: 525px) {
+    &__img {
+      width: 300px;
+      height: 170px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px black;
+    }
+  }
+  @media only screen and (max-width: 375px) {
+    &__img {
+      width: 180px;
+      height: 110px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px black;
+    }
+    &__show-info,
+    &__add-btn {
+      font-size: 1em;
+    }
   }
 }
 </style>

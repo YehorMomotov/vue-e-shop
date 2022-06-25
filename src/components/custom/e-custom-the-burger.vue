@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="e-custom-the-burger-wrapper"
-    v-if="currentBurgerParts.length"
-  >
+  <div v-if="currentBurgerParts.length">
     <div class="e-custom-the-burger">
       <div
         class="e-custom-the-burger__parts"
@@ -52,9 +49,6 @@ export default {
 
 <style lang="scss">
 .e-custom-the-burger {
-  &__wrapper {
-    flex-basis: 48%;
-  }
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -97,6 +91,34 @@ export default {
         height: 100%;
         object-fit: cover;
         object-position: -100 0;
+      }
+    }
+  }
+  @media screen and(max-width: 1024px) {
+    padding: $padding;
+    &__parts {
+      height: 50px;
+      .img-wrapper {
+        width: 150px;
+        height: 90px;
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    &__parts {
+      height: 40px;
+      .img-wrapper {
+        width: 100px;
+        height: 60px;
+      }
+    }
+  }
+  @media screen and (max-width: 375px) {
+    &__parts {
+      height: 30px;
+      .img-wrapper {
+        width: 60px;
+        height: 40px;
       }
     }
   }

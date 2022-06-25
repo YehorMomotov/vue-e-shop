@@ -1,33 +1,42 @@
 {
   "order": {
-    "totalCost": 21,
+    "totalCost": 2887.659,
     "orderData": {
       "userName": {
-        "value": "3123",
+        "value": "noen",
         "validation": true
       },
       "phoneNumber": {
-        "value": "(123) 123-12-31",
+        "value": "(213) 123-12-31",
         "validation": true
       },
       "location": {
-        "value": "123123",
+        "value": "noen",
         "validation": true
       },
       "cutlery": {
-        "value": 1,
+        "value": 20,
         "validation": true
       },
-      "additional": "1231224112",
+      "additional": "n=gruh",
       "cartData": [
         {
-          "price": 10.5,
-          "image": "custom.png",
-          "name": "Custom burger",
-          "article": "BC1655826890808",
+          "image": "Peekoniburger.copy_.jpeg",
+          "name": "Burger with beacon",
+          "price": 300.101,
+          "article": "B2",
           "available": true,
           "category": "Burger",
-          "quantity": 2,
+          "quantity": 9
+        },
+        {
+          "price": 37.35,
+          "image": "custom.png",
+          "name": "Custom burger",
+          "article": "BC1656157572291",
+          "available": true,
+          "category": "Burger",
+          "quantity": 5,
           "contains": [
             {
               "image": "top-bread-bun.png",
@@ -42,6 +51,18 @@
               "selectedOption": "white"
             },
             {
+              "image": "cutlet.png",
+              "name": "cutlet",
+              "available": true,
+              "price": 14,
+              "species": [
+                "beef",
+                "pork",
+                "chicken"
+              ],
+              "selectedOption": "beef"
+            },
+            {
               "image": "middle-bread-bun.png",
               "name": "middle-bread-bun",
               "available": true,
@@ -52,6 +73,18 @@
                 "rye"
               ],
               "selectedOption": "white"
+            },
+            {
+              "image": "mushrooms.png",
+              "name": "mushrooms",
+              "available": true,
+              "price": 12.85,
+              "species": [
+                "champignons",
+                "chanterelles",
+                "cep"
+              ],
+              "selectedOption": "champignons"
             },
             {
               "image": "bottom-bread-bun.png",

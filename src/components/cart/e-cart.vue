@@ -33,7 +33,7 @@
               type="number"
               min="1"
               max="20"
-              onKeyDown="return false"
+              maxlength="2"
               v-model="orderData.cutlery.value"
             />
           </div>
@@ -54,8 +54,7 @@
       </div>
     </ePopupVue>
     <h1>Cart</h1>
-
-    <router-link class="e-catalog__link-to-cart" :to="{ name: 'catalog' }"
+    <router-link class="e-cart__link-to-catalog" :to="{ name: 'catalog' }"
       >Back to catalog</router-link
     >
     <p v-if="!orderData.cartData.length">No items :(</p>
@@ -164,10 +163,15 @@ export default {
       }
 
       if (this.orderData.cutlery.value <= 20) {
+        this.orderData.cutlery.value = 20;
+        this.orderData.cutlery.validation = true;
+      } else if (this.orderData.cutlery.value > 0) {
+        this.orderData.cutlery.value = 0;
         this.orderData.cutlery.validation = true;
       } else {
         this.orderData.cutlery.validation = false;
       }
+
       if (this.orderData.userName.value) {
         this.orderData.userName.validation = true;
       } else {
@@ -211,6 +215,7 @@ export default {
 .e-cart {
   .popup-content {
     width: 400px;
+    padding-bottom: 0;
     .inputs-wrapper {
       display: flex;
       padding: $padding;
@@ -218,13 +223,13 @@ export default {
       align-items: center;
       background-color: $sandy_beach;
       border-radius: 10px;
-      margin-bottom: $padding;
+      margin-bottom: $margin;
       .cutlery {
         font-size: 1.5em;
       }
       input {
-        margin-top: $padding;
-        margin-bottom: $padding;
+        margin-top: $margin;
+        margin-bottom: $margin;
         font-size: 1.5em;
         width: min-content;
         border-radius: 10px;
@@ -233,13 +238,20 @@ export default {
       }
     }
   }
+  &__link-to-catalog {
+    text-decoration: none;
+    color: $cedar;
+    font-size: 2em;
+    border-radius: 10px;
+    padding: $padding;
+    background: $sandy_beach;
+  }
   &__confirm {
     .big {
       font-size: 10em;
       color: black;
     }
   }
-  padding-bottom: 0;
   &__total {
     &__content {
       display: flex;
@@ -253,6 +265,26 @@ export default {
     margin-top: 300px;
     .total_name {
       margin-right: $margin * 2;
+    }
+  }
+  @media only screen and (max-width: 525px) {
+    .popup-content {
+      width: 240px;
+      .inputs-wrapper {
+        input {
+          margin-top: $margin/2;
+          margin-bottom: $margin/2;
+          font-size: 0.8em;
+          width: min-content;
+          padding: 3px;
+        }
+      }
+    }
+    &__confirm {
+      .big {
+        font-size: 5em;
+        color: black;
+      }
     }
   }
 }

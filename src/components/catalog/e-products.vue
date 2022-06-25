@@ -123,18 +123,47 @@ export default {
 <style lang="scss">
 .e-products {
   &__list {
-    margin-top: 10px;
+    margin: 10px;
     width: fit-content;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
   }
-
   .filters {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 10px;
+  }
+  @media screen and (max-width: 1440px) {
+    &__list {
+      margin: 70px;
+      margin-top: 10px;
+    }
+    .filters {
+      margin-left: 70px;
+    }
+  }
+  @media screen and (max-width: 1240px) {
+    &__list {
+      margin: 30px;
+      margin-top: 10px;
+    }
+    .filters {
+      margin: 30px;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    &__list {
+      margin: 0;
+      margin-top: 10px;
+      justify-content: space-evenly;
+    }
+    .filters {
+      margin: 0;
+      justify-content: space-evenly;
+    }
   }
 }
 </style>

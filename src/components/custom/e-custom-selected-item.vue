@@ -7,13 +7,15 @@
     <div class="btns">
       <div class="move-btns">
         <button class="move-btns__up" @click="itemAction('up')">
-          Move Up <i class="material-icons">arrow_upward</i></button
+          <span>Move Up</span>
+          <i class="material-icons">arrow_upward</i></button
         ><button class="move-btns__down" @click="itemAction('down')">
-          Move Down <i class="material-icons"> arrow_downward</i>
+          <span>Move Down</span>
+          <i class="material-icons"> arrow_downward</i>
         </button>
       </div>
       <button class="remove-btn" @click="itemAction('remove')">
-        Remove<i class="material-icons">clear</i>
+        <span>Remove</span><i class="material-icons">clear</i>
       </button>
     </div>
     <div class="e-selected-item__options">
@@ -24,19 +26,21 @@
         :title="selectedItem.name | kebabToNormal"
         :alt="selectedItem.name | kebabToNormal"
       />
-      <div v-if="selectedItem.species.length > 1">
+      <div class="species" v-if="selectedItem.species.length > 1">
         <eSelectVue
           :selected="selectedItem.selectedOption"
           :options="selectedItem.species"
           @select="selectSpecies"
         />
-        <input
-          @change="apllyToAll(selectedItem.selectedOption)"
-          type="checkbox"
-          name="none"
-          :checked="selectedItem.appliedToAll"
-        />
-        <span>Apply on similar ingredients?</span>
+        <div>
+          <input
+            @change="apllyToAll(selectedItem.selectedOption)"
+            type="checkbox"
+            name="none"
+            :checked="selectedItem.appliedToAll"
+          />
+          <span>Apply on similar ingredients?</span>
+        </div>
       </div>
     </div>
     <p>
@@ -87,11 +91,8 @@ export default {
 .e-selected-item {
   padding: $padding;
   flex-basis: 25%;
-  &__options {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-  }
+  min-width: 330px;
+  max-width: 330px;
   &__options {
     display: flex;
     justify-content: center;
@@ -99,6 +100,15 @@ export default {
     img {
       padding-right: 10px;
       width: 100px;
+    }
+    .species {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      input {
+        margin-top: 10px;
+      }
     }
   }
   .btns {
@@ -159,6 +169,96 @@ export default {
       border-top-left-radius: 0;
       background: $mandalay;
       padding: $padding/2;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .e-selected-item {
+    min-width: 230px;
+    max-width: 230px;
+    &__options {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .btns {
+      .move-btns {
+        &__up,
+        &__down {
+          font-size: 1em;
+        }
+      }
+      .remove-btn {
+        font-size: 1em;
+      }
+    }
+  }
+}
+@media screen and (max-width: 525px) {
+  .e-selected-item {
+    min-width: 120px;
+    max-width: 120px;
+    h2 {
+      font-size: 0.9em;
+    }
+    &__options {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .species {
+        input {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    .btns {
+      .move-btns {
+        &__up,
+        &__down {
+          span {
+            font-size: 0em;
+          }
+          .material-icons {
+            font-size: 1em;
+          }
+        }
+      }
+      .remove-btn {
+        span {
+          font-size: 0em;
+        }
+        .material-icons {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 375px) {
+  .e-selected-item {
+    min-width: 90px;
+    max-width: 90px;
+    h2 {
+      font-size: 0.7em;
+    }
+    p {
+      font-size: 0.7em;
+    }
+    &__options {
+      img {
+        padding-right: 0;
+        width: 70px;
+      }
+      .species {
+        input {
+          width: 15px;
+          height: 15px;
+        }
+        span {
+          font-size: 0.9em;
+        }
+      }
     }
   }
 }

@@ -60,6 +60,8 @@ export default {
   right: 20px;
   .succeed {
     background: green;
+    max-height: min-content;
+    max-width: max-content;
   }
   .error {
     background: red;
@@ -68,7 +70,6 @@ export default {
     background: darkorange;
   }
   z-index: 101;
-  background: transparent !important;
   &__content {
     padding: $padding * 2;
     margin-bottom: 20px;
@@ -82,17 +83,24 @@ export default {
   &__content {
     &__text {
       display: flex;
-      background: transparent !important;
-      span {
-        background: transparent !important;
-      }
       align-items: center;
       justify-content: space-between;
     }
   }
   .material-icons {
     margin-left: 10px;
-    background: transparent !important;
+  }
+  @media only screen and (max-width: 768px) {
+    &__content {
+      padding: $padding;
+      padding-top: 0;
+      padding-bottom: 0;
+      font-size: 0.8em;
+    }
+  }
+  @media only screen and (max-width: 525px) {
+  }
+  @media only screen and (max-width: 375px) {
   }
 }
 .e-transition-animate {

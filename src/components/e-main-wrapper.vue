@@ -3,7 +3,9 @@
     <eNotificationsVue />
     <eHeaderVue />
     <keep-alive>
-      <router-view class="e-main-wrapper__content"></router-view>
+      <router-view
+        class="e-main-wrapper__content main-width"
+      ></router-view>
     </keep-alive>
     <eFooterVue />
   </div>
@@ -35,9 +37,8 @@ export default {
   &__content {
     background: $moccasin;
     border-radius: 5px;
-    padding: $padding * 2;
-    max-width: $body_width - 16px;
-    padding-bottom: 100px;
+    padding: $padding;
+    padding-bottom: 0;
     padding-top: 150px;
     margin: 0 auto;
   }

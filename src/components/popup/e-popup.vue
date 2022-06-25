@@ -50,6 +50,7 @@ export default {
 
 <style lang="scss">
 .popup-wrapper {
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,7 +64,7 @@ export default {
   background: #00000070;
 }
 .e-popup {
-  z-index: 4;
+  z-index: 11;
   padding: $padding * 2;
   background: white;
   position: fixed;
@@ -121,6 +122,13 @@ export default {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
       background: $green_bg;
+    }
+    @media only screen and (max-width: 375px) {
+      .close-btn,
+      .add-btn {
+        width: fit-content;
+        font-size: 0.8em;
+      }
     }
   }
 }
